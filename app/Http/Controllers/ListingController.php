@@ -13,9 +13,10 @@ class ListingController extends Controller
     {
         $segment = Str::lower($segment);
 
+        // Unfiltered query: drives the 404 decision and SEO policy.
+        // The interactive grid itself is rendered by the ProjectListing Livewire component.
         $projects = Project::query()
-            ->where('status', 'active')
-            ->where(fn ($q) => $q->where('city', $segment)->orWhere('type', $segment))
+            ->listing($segment)
             ->orderByDesc('id')
             ->paginate(20)
             ->withQueryString();
@@ -24,6 +25,6 @@ class ListingController extends Controller
 
         $seo = $policy->decide($request, $projects);
 
-        return view('listing', compact('projects', 'seo'));
+        return view('listing', compact('projects', 'seo', 'segment'));
     }
 }

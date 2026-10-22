@@ -1,11 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Real estate projects</h1>
+    <h1 class="mb-6 text-3xl font-bold capitalize text-slate-900">Real estate projects in {{ str_replace('-', ' ', $segment) }}</h1>
 
-    @foreach ($projects as $project)
-        <x-project-card :project="$project" :eager="$loop->first" />
-    @endforeach
-
-    {{ $projects->links() }}
+    <livewire:project-listing :segment="$segment" />
 @endsection

@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>MoneyTree Realty</h1>
+    <h1>
+        <b>MoneyTree Realty</b>
+    </h1>
     <ul>
         <li><a href="/real-estate-projects/goa">Goa projects (3 active: must be indexable)</a></li>
         <li><a href="/real-estate-projects/goa?bhk=2">Goa filtered (noindex, canonical to clean)</a></li>
